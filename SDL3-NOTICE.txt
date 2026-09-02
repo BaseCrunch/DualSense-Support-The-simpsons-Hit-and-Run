@@ -1,2 +1,0 @@
-SDL3.dll is SDL 3.4.14 Win32/x86. SDL is distributed under the zlib license.
-Project: https://www.libsdl.org/
