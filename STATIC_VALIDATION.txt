@@ -1,0 +1,36 @@
+NEXUS DUALSENSE FOR LUCAS - TEST 01 STATIC VALIDATION
+=====================================================
+
+Lucas wrapper:
+- PE32 / Intel i386 DLL (.lmlh)
+- Export: HackEntryPoint_NexusDualSense
+- Embedded Lucas resource type: DATA
+- Embedded resources:
+    META.INI
+    NEXUSDUALSENSE\META.INI
+- Required launcher metadata: 1.27.1
+- No imports in the wrapper; Win32 loader functions are resolved from loaded modules.
+- Runtime lookup prefers Lucas DLLs\Hacks.dll's directory, then falls back
+  from Hacks\NexusDualSense.lmlh to DLLs\NexusDualSenseHook.dll.
+- Wrapper only loads the runtime while executing inside Simpsons.exe.
+- On any later Lucas game-side hack event, it retries loading if it has not
+  loaded yet; it only reports event 0 as handled to avoid claiming unrelated events.
+
+Native runtime source:
+- Current Test 66 NexusDualSenseHook.cpp
+- SHA256: 61a22b4bf8cb40fb5f27d528c7da2113b5480f90aa74f18b990703397e693b7a
+- Existing Test 62 Mappable::DispatchOnButton input bridge retained.
+- Existing Test 64 approved controls retained.
+- Existing Test 65 rumble mixer retained.
+- Existing Test 66 SHAR EventManager haptics retained.
+
+SDL:
+- SDL3 3.4.14 Win32/x86
+- DLL SHA256: 0ebae02e91f1997b39412f7f14f77b6131599a0f39db38bf782132c5bc47c63d
+
+Prompt companion:
+- Dynamic FIX6 CustomFiles path handler; no direct ingame.p3d override.
+- Requires CustomFiles and NexusDualSense hacks.
+
+Runtime execution has NOT been claimed as verified on Windows/Lucas yet;
+this Test 01 package is the first Lucas-native integration test.
