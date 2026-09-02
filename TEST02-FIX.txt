@@ -1,0 +1,16 @@
+TEST 02 FIX
+===========
+Observed Lucas 1.27.1 error:
+  Could not load the mod 'Nexus DualSense Prompts'. The required hack
+  'Nexus DualSense' does not support being required by a mod.
+
+Cause:
+  Test 01 prompt Meta.ini contained RequiredHack=NexusDualSense.
+
+Fix:
+  Removed RequiredHack=NexusDualSense.
+  Kept RequiredHack=CustomFiles.
+  Nexus DualSense and Nexus DualSense Prompts are enabled as two separate
+  Lucas checkboxes.
+
+No native controller/haptics code was changed in this patch.

@@ -3,7 +3,7 @@ setlocal EnableExtensions EnableDelayedExpansion
 cd /d "%~dp0"
 
 echo ============================================================
-echo Nexus DualSense for Lucas Mod Launcher - Test 01
+echo Nexus DualSense for Lucas Mod Launcher - Test 02
 echo Builds current Test 66 x86 runtime and verifies Lucas install
 echo ============================================================
 echo.
@@ -95,8 +95,8 @@ echo   Mods\SpringfieldNexusDualSensePrompts\
 echo.
 echo NEXT:
 echo   1. Close and reopen Lucas Mod Launcher, or click Reload.
-echo   2. Enable "Nexus DualSense Prompts" in the Mods list.
-echo      It requires the Nexus DualSense hack automatically.
+echo   2. Enable BOTH "Nexus DualSense" and "Nexus DualSense Prompts".
+echo      Test 02 intentionally keeps these as two separate checkboxes.
 echo   3. If Lucas shows an unsigned/untrusted hack warning, allow this hack.
 echo   4. Launch the game with your DualSense connected.
 echo.

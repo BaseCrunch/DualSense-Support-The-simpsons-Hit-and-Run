@@ -1,61 +1,66 @@
-NEXUS DUALSENSE FOR LUCAS MOD LAUNCHER - TEST 01
+NEXUS DUALSENSE FOR LUCAS MOD LAUNCHER - TEST 02
 ================================================
 
 THIS IS THE LUCAS-ONLY VERSION.
 Springfield Nexus is NOT required to launch the game.
 
-INSTALL
--------
-1. Open your Lucas Mod Launcher folder - the folder containing:
-      Lucas Simpsons Hit & Run Mod Launcher.exe
-      DLLs\
-      Mods\
+WHAT TEST 02 FIXES
+------------------
+Lucas 1.27.1 correctly loaded our custom "Nexus DualSense" hack, but Test 01
+made the prompt mod declare it as RequiredHack=NexusDualSense. Lucas rejected
+that because this third-party .lmlh is not marked as a Mod-Requirable hack.
 
-2. Extract the CONTENTS of this ZIP directly into that folder.
-   If Windows asks to merge DLLs / Mods folders, choose Yes.
-   This package does NOT replace Lucas' DLLs\Hacks.dll.
+Test 02 removes ONLY that dependency. The two pieces are now enabled normally:
+
+    [x] Nexus DualSense
+    [x] Nexus DualSense Prompts
+
+The prompt mod still legitimately requires Lucas' built-in CustomFiles hack.
+
+INSTALL / UPDATE
+----------------
+1. Close Lucas Mod Launcher.
+
+2. Extract the CONTENTS of this ZIP directly into the folder containing:
+      Lucas Simpsons Hit & Run Mod Launcher.exe
+
+   Allow Windows to merge/replace the Test 01 files.
+   This package does NOT replace DLLs\Hacks.dll.
 
 3. Run:
       INSTALL_NEXUS_DUALSENSE.bat
 
-   The BAT compiles the current Test 66 native runtime with the same
-   Win32/x86 Visual C++ build command used by Springfield Nexus.
+4. Open Lucas Mod Launcher or click Reload.
 
-4. Reopen Lucas Mod Launcher or click Reload.
-
-5. Enable:
+5. In the Mods List, tick BOTH:
+      Nexus DualSense
       Nexus DualSense Prompts
 
-   That mod requires the custom NexusDualSense hack, so Lucas should
-   enable/load the native hack with it. The custom hack itself is:
-      Hacks\NexusDualSense.lmlh
+6. If Lucas warns that Nexus DualSense is an unsigned/untrusted third-party
+   hack, allow it if you want to run this test build.
 
-6. If Lucas 1.27.1 warns that NexusDualSense is an unsigned/untrusted
-   third-party hack, allow it if you want to run this test build.
+7. Connect the DualSense by Bluetooth or USB and click Launch.
 
-7. Launch SHAR with your DualSense connected by Bluetooth or USB.
-
-FILES
------
-Hacks\NexusDualSense.lmlh
-    Lucas-compatible x86 wrapper hack. On game load it loads the Test 66
-    native runtime from DLLs\NexusDualSenseHook.dll.
-
-DLLs\NexusDualSenseHook.dll
-    Built locally by INSTALL_NEXUS_DUALSENSE.bat from the current Test 66
-    source. This is the real SHAR native input/haptics bridge.
-
-DLLs\SDL3.dll
-    SDL 3.4.14 Win32/x86 runtime used for native DualSense HID/gamepad I/O.
-
-Mods\SpringfieldNexusDualSensePrompts\
-    PlayStation-style SHAR prompt companion.
+EXPECTED LUCAS LAYOUT
+---------------------
+Mod Launcher\
+  Hacks\
+    NexusDualSense.lmlh
+  DLLs\
+    Hacks.dll                    <- Lucas original, NEVER replace this
+    NexusDualSenseHook.dll       <- our Test 66 native SHAR bridge
+    SDL3.dll
+    NexusDualSense.ini
+  Mods\
+    SpringfieldNexusDualSensePrompts\
+      Meta.ini
+      CustomFiles.ini
+      Resources\scripts\handlers\ingame_dualsense.lua
 
 DIAGNOSTICS
 -----------
-After the game starts, the native hook writes:
+After Simpsons.exe starts, look for:
     NexusDualSense_Hook.log
-next to the Lucas launcher folder.
 
 Expected early log lines include:
     Springfield Nexus DualSense Hack - Prototype 10 / Test 66 SHAR event haptics loaded
@@ -65,5 +70,5 @@ IMPORTANT
 ---------
 Do NOT put NexusDualSense.lmlh into DLLs.
 Do NOT replace DLLs\Hacks.dll.
-The .lmlh belongs in the separate Hacks folder. If your Lucas install does
-not currently have a Hacks folder, this package creates/adds it.
+Do NOT require NexusDualSense from the prompt mod in Test 02; enable the two
+checkboxes together in Lucas.
